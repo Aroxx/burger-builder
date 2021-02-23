@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import axios from '../../axios-orders';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import axios from '../../axios-orders';
+import Modal from '../../components/UI/Modal/Modal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
@@ -25,10 +25,9 @@ class BurgerBuilder extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props);
     axios
-      .get(
-        'https://my-burger-react-96935-default-rtdb.firebaseio.com/ingredients.json'
-      )
+      .get('https://my-burger-react-96935-default-rtdb.firebaseio.com/ingredients.json')
       .then((response) => {
         this.setState({ ingredients: response.data });
       })
@@ -57,32 +56,16 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    this.setState({ loading: true });
-    //alert('You continue!');
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: 'Alex Hall',
-        address: {
-          street: '123 Test Street',
-          zipCode: '08690',
-          country: 'USA',
-        },
-        email: 'test@test.com',
-      },
-      deliveryMethod: 'fastest',
-    };
-    axios
-      .post('/orders.json', order)
-      .then((response) => {
-        this.setState({ loading: false, purchasing: false });
-        console.log(response);
-      })
-      .catch((error) => {
-        this.setState({ loading: false, purchasing: false });
-        console.log(error);
-      });
+    const queryParams = [];
+    for (let i in this.state.ingredients) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+    }
+    queryParams.push('price=' + this.state.totalPrice.toFixed(2));
+    const queryString = queryParams.join('&');
+    this.props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryString,
+    });
   };
 
   addIngredientHandler = (type) => {
@@ -93,7 +76,6 @@ class BurgerBuilder extends Component {
     };
     updatedIngredients[type] = updatedCount;
     const priceAddition = INGREDIENT_PRICES[type];
-    //const oldPrice = this.state.totalPrice;
     const newPrice = this.state.totalPrice + priceAddition;
     this.setState({
       ingredients: updatedIngredients,
@@ -113,7 +95,6 @@ class BurgerBuilder extends Component {
     };
     updatedIngredients[type] = updatedCount;
     const priceSubtraction = INGREDIENT_PRICES[type];
-    //const oldPrice = this.state.totalPrice;
     const newPrice = this.state.totalPrice - priceSubtraction;
     this.setState({
       ingredients: updatedIngredients,
@@ -130,11 +111,7 @@ class BurgerBuilder extends Component {
       disableInfo[key] = disableInfo[key] <= 0;
     }
     let orderSummary = null;
-    let burger = this.state.error ? (
-      <p>Ingredients can't be loaded!</p>
-    ) : (
-      <Spinner />
-    );
+    let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
     if (this.state.ingredients) {
       burger = (
         <Fragment>
@@ -163,10 +140,7 @@ class BurgerBuilder extends Component {
     }
     return (
       <Fragment>
-        <Modal
-          show={this.state.purchasing}
-          modalClosed={this.purchaseCancelHandler}
-        >
+        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
           {orderSummary}
         </Modal>
         {burger}
