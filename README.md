@@ -17,17 +17,20 @@ I'm enjoying the course and I would recommend it to anyone starting with React. 
 - Context API
 - Hooks
 - Lifecycle Methods
-- XMLHTTPRequest with Axios
+- XMLHTTPRequest with [Axios](https://github.com/axios/axios)
 - Integrating with [Firebase](https://firebase.google.com/)
 - Routing with react-router-dom
 - queryParams
 - Forms and Form Validation
+- Redux
 
 ## Third-party Libraries Discussed and Used
 
 - [Create React App](https://github.com/facebook/create-react-app)
 - [Prop-Type](https://github.com/facebook/prop-types)
 - [Axios](https://github.com/axios/axios)
+- [Firebase](https://firebase.google.com/)
 - [styled-components](https://github.com/styled-components/styled-components)
 - [Radium](https://github.com/FormidableLabs/radium)
 - [react-router / react-router-dom](https://github.com/ReactTraining/react-router)
+- [Redux](https://redux.js.org/) and [React-Redux](https://react-redux.js.org/)
