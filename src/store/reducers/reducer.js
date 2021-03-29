@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
     const newPrice = state.totalPrice + INGREDIENT_PRICES[action.ingredientName];
     return {
       ingredients: updatedIngredients,
-      totalPrice: newPrice,
+      totalPrice: newPrice.toFixed(2),
     };
   }
   if (action.type === 'REMOVE_INGREDIENT') {
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
     const newPrice = state.totalPrice - INGREDIENT_PRICES[action.ingredientName];
     return {
       ingredients: updatedIngredients,
-      totalPrice: newPrice,
+      totalPrice: newPrice.toFixed(2),
     };
   }
   return state;
