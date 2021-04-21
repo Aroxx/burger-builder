@@ -22,11 +22,12 @@ I'm enjoying the course and I would recommend it to anyone starting with React. 
 - Routing with react-router-dom
 - queryParams
 - Forms and Form Validation
-- Redux
+- Redux, React-Redux, Redux Thunk
 
 ## Third-party Libraries Discussed and Used
 
 - [Create React App](https://github.com/facebook/create-react-app)
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 - [Prop-Type](https://github.com/facebook/prop-types)
 - [Axios](https://github.com/axios/axios)
 - [Firebase](https://firebase.google.com/)
@@ -34,3 +35,5 @@ I'm enjoying the course and I would recommend it to anyone starting with React. 
 - [Radium](https://github.com/FormidableLabs/radium)
 - [react-router / react-router-dom](https://github.com/ReactTraining/react-router)
 - [Redux](https://redux.js.org/) and [React-Redux](https://react-redux.js.org/)
+- [Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
