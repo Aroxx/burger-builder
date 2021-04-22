@@ -2,10 +2,6 @@ import React, { Fragment, Component } from 'react';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
-  // This could be a functional component, does not have to be a class. Only implemented for debugging.
-  componentDidUpdate() {
-    console.log('[OrderSummary] DidUpdate');
-  }
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients).map((igKey) => {
       return (

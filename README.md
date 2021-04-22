@@ -18,11 +18,14 @@ I'm enjoying the course and I would recommend it to anyone starting with React. 
 - Hooks
 - Lifecycle Methods
 - XMLHTTPRequest with [Axios](https://github.com/axios/axios)
-- Integrating with [Firebase](https://firebase.google.com/)
+- Integrating Realtime Database with [Firebase](https://firebase.google.com/)
 - Routing with react-router-dom
 - queryParams
 - Forms and Form Validation
-- Redux, React-Redux, Redux Thunk
+- Redux, React-Redux, Redux Thunk (Middleware)
+- Authentication with Firebase
+- Firebase Token Management with localStorage
+- Lazy-loading components with async utility function
 
 ## Third-party Libraries Discussed and Used
 
